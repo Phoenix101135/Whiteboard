@@ -26,7 +26,9 @@ canvas.addEventListener("mousedown", function (e) {
   console.log("Inside mouse down");
   isPenDown = true;
   let x = e.clientX;
+
   let y = e.clientY - 100;
+  console.log(e.clientX);
   ctx.beginPath();
   ctx.moveTo(x, y);
 
@@ -45,8 +47,8 @@ canvas.addEventListener("touchstart",function (e) {
   }
   console.log("Inside touchstart");
   isPenDown = true;
-  let x = e.clientX;
-  let y = e.clientY - 100;
+  let x = e.touches[0].clientX ;
+  let y = e.touches[0].clientY - 100;
   ctx.beginPath();
   ctx.moveTo(x, y);
 
@@ -67,7 +69,7 @@ canvas.addEventListener("mousemove", function (e) {
     let y = e.clientY - 100;
     ctx.lineTo(x, y);
     ctx.stroke();
-
+  
     let pointObject = {
       x: x,
       y: y,
@@ -80,10 +82,11 @@ canvas.addEventListener("mousemove", function (e) {
 canvas.addEventListener("touchmove", function (e) {
   if (isPenDown) {
     console.log("Inside touchmove");
-    let x = e.clientX;
-    let y = e.clientY - 100;
+    let x = e.touches[0].clientX ;
+    let y = e.touches[0].clientY - 100;
     ctx.lineTo(x, y);
     ctx.stroke();
+    console.log(x);
 
     let pointObject = {
       x: x,
